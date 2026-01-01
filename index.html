@@ -21,6 +21,20 @@
   <!-- Yandex Verification (добавьте свой код после регистрации в Яндекс.Вебмастере) -->
   <meta name="yandex-verification" content="">
   
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106096512', 'ym');
+
+    ym(106096512, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/106096512" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://luckybear-info.com/">
@@ -155,10 +169,48 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--background-dark);
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(138, 43, 226, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 191, 255, 0.1) 0%, transparent 60%),
+        linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #0f172a 100%);
+      background-attachment: fixed;
       color: var(--text-primary);
       line-height: 1.7;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(180deg, 
+          rgba(0, 255, 255, 0.1) 0%,
+          transparent 20%,
+          rgba(138, 43, 226, 0.15) 40%,
+          transparent 60%,
+          rgba(0, 191, 255, 0.1) 80%,
+          transparent 100%
+        );
+      animation: aurora 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes aurora {
+      0%, 100% {
+        opacity: 0.5;
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateY(-20px) scale(1.05);
+      }
     }
 
     /* Header */
@@ -272,13 +324,14 @@
       justify-content: center;
       text-align: center;
       background: 
-        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 70%),
-        var(--background-dark);
+        radial-gradient(ellipse at 20% 30%, rgba(0, 255, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 191, 255, 0.15) 0%, transparent 60%),
+        linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #0f172a 100%);
       position: relative;
       overflow: hidden;
       padding-top: 80px;
+      z-index: 1;
     }
 
     .hero::before {
@@ -302,7 +355,7 @@
       max-width: 900px;
       padding: 2rem;
       position: relative;
-      z-index: 2;
+      z-index: 10;
     }
 
     .hero-badge {
@@ -451,13 +504,19 @@
     /* Info Section - Лакибир Информация */
     .info-section {
       padding: 100px 2rem;
-      background: linear-gradient(135deg, #1a1f3a 0%, #0f172a 100%);
+      background: 
+        radial-gradient(ellipse at 40% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 40%, rgba(138, 43, 226, 0.12) 0%, transparent 50%),
+        linear-gradient(135deg, #1a1f3a 0%, #0f172a 100%);
       position: relative;
+      z-index: 1;
     }
 
     .info-container {
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
 
     .section-title {
@@ -549,9 +608,13 @@
     /* Games Section */
     .games-section {
       padding: 100px 0;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      background: 
+        radial-gradient(ellipse at 30% 40%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
       position: relative;
       overflow: hidden;
+      z-index: 1;
     }
 
     .games-section::before {
@@ -573,7 +636,7 @@
       margin: 0 auto;
       padding: 0 20px;
       position: relative;
-      z-index: 2;
+      z-index: 10;
     }
 
     .game-card {
@@ -704,12 +767,18 @@
     /* Features Section */
     .features-section {
       padding: 100px 2rem;
-      background: var(--background-card);
+      background: 
+        radial-gradient(ellipse at 50% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+        var(--background-card);
+      position: relative;
+      z-index: 1;
     }
 
     .features-container {
       max-width: 1400px;
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
 
     .features-grid {
@@ -777,9 +846,13 @@
 
     /* Footer */
     .footer {
-      background: var(--background-dark);
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+        var(--background-dark);
       padding: 4rem 2rem 1.5rem;
       border-top: 1px solid var(--border-color);
+      position: relative;
+      z-index: 1;
     }
 
     .footer-container {
@@ -992,9 +1065,222 @@
       transform: translateY(-5px);
       box-shadow: var(--shadow-xl);
     }
+
+    /* Snow Animation */
+    .snow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1em;
+      font-family: Arial, sans-serif;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      animation: snowfall linear infinite;
+      user-select: none;
+    }
+
+    @keyframes snowfall {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(var(--drift)) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Featured Games - Highlight */
+    .game-card.featured {
+      border: 2px solid rgba(255, 215, 0, 0.6);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+      position: relative;
+    }
+
+    .game-card.featured::after {
+      content: '⭐ ТОП';
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--gradient-gold);
+      color: #000;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0.8rem 1rem;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+      }
+
+      .logo img {
+        height: 35px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-keywords {
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .keyword-tag {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .btn-primary, .btn-secondary {
+        padding: 1rem 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+      }
+
+      .info-content {
+        padding: 1.5rem 1rem;
+      }
+
+      .info-content h2 {
+        font-size: 1.5rem;
+      }
+
+      .info-content h3 {
+        font-size: 1.2rem;
+      }
+
+      .info-content p, .info-content li {
+        font-size: 0.95rem;
+      }
+
+      .games-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+      }
+
+      .game-card {
+        padding: 25px 20px;
+      }
+
+      .game-icon-container {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+      }
+
+      .game-icon {
+        width: 70px;
+        height: 70px;
+      }
+
+      .game-title {
+        font-size: 1.3rem;
+      }
+
+      .game-description {
+        font-size: 0.9rem;
+      }
+
+      .game-play-btn {
+        padding: 12px 25px;
+        font-size: 0.85rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .feature-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+      }
+
+      .feature-title {
+        font-size: 1.3rem;
+      }
+
+      .feature-description {
+        font-size: 0.95rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .scroll-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.6rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .game-card {
+        padding: 20px 15px;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Snow Animation Container -->
+  <div class="snow-container" id="snowContainer"></div>
   <!-- Header -->
   <header class="header" id="header">
     <nav class="nav-container">
@@ -1091,12 +1377,15 @@
           <strong>Лакибир</strong> предлагает огромный выбор игр на любой вкус. Среди самых популярных игр в Лакибирказино:
         </p>
         <ul>
-          <li><strong>Пиньята</strong> - уникальная игра с бонусными раундами и джекпотами</li>
-          <li><strong>Слоты</strong> - классические и современные игровые автоматы</li>
-          <li><strong>Рулетка</strong> - европейская и американская рулетка с живыми дилерами</li>
-          <li><strong>Блэкджек</strong> - карточная игра с профессиональными дилерами</li>
-          <li><strong>Покер</strong> - различные виды покера, включая Техасский Холдем</li>
-          <li><strong>Live казино</strong> - игры с реальными дилерами в режиме реального времени</li>
+          <li><strong>MineDrop</strong> - уникальное онлайн-казино в Лакибир, где выигрыши платят до того, как вы закрываете вкладку! В Лакибирказино вы можете играть в MineDrop и получать мгновенные выплаты. Это лицензированное казино с персонализированными бонусами и уникальными игровыми автоматами.</li>
+          <li><strong>AVIAMASTERS</strong> - аркадный симулятор полёта в Лакибир, где вы наблюдаете весь маршрут самолёта и рост банка в реальном времени. В полёте встречаются коэффициенты «x5–x10», которые умножают текущий банк. Проект от студии BGaming с продуманной механикой и высоким потенциалом выигрыша в Лакибирказино.</li>
+          <li><strong>TOWERRUSH</strong> - динамичная игра в Лакибирказино, где всё решает твоя стратегия. Башня растёт этаж за этажом, множитель увеличивается, а вместе с ним и твой выигрыш. Каждый новый уровень — это риск и шанс на победу в Лакибир.</li>
+          <li><strong>Пиньята</strong> - уникальная игра с бонусными раундами и джекпотами в Лакибир</li>
+          <li><strong>Слоты</strong> - классические и современные игровые автоматы в Лакибирказино</li>
+          <li><strong>Рулетка</strong> - европейская и американская рулетка с живыми дилерами в Лакибир</li>
+          <li><strong>Блэкджек</strong> - карточная игра с профессиональными дилерами в Лакибирказино</li>
+          <li><strong>Покер</strong> - различные виды покера, включая Техасский Холдем в Лакибир</li>
+          <li><strong>Live казино</strong> - игры с реальными дилерами в режиме реального времени в Лакибирказино</li>
         </ul>
 
         <h3>Бонусы и Акции в Лакибир</h3>
@@ -1128,6 +1417,37 @@
     </p>
     
     <div class="games-grid">
+      <!-- Featured Games - Top Priority -->
+      <div class="game-card featured">
+        <div class="game-icon-container">
+          <img src="images/еще%20картинки/MINEDROP.jpg" alt="MineDrop в Лакибир" class="game-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="game-placeholder" style="display: none;">⛏️</div>
+        </div>
+        <h3 class="game-title">MineDrop</h3>
+        <p class="game-description">MineDrop — это уникальное онлайн-казино в Лакибир, где выигрыши платят до того, как вы закрываете вкладку! В Лакибирказино вы можете играть в MineDrop и получать мгновенные выплаты. Это лицензированное казино с персонализированными бонусами и уникальными игровыми автоматами, которые вы не найдете больше нигде. MineDrop в Лакибир предлагает безопасность, современные технологии шифрования и незабываемый игровой опыт. Регистрация в MineDrop через Лакибир проста и интуитивна — всего несколько минут, и вы получите доступ ко всем привилегиям казино.</p>
+        <a href="https://lbgame777.xyz/1AvT3g" class="game-play-btn" target="_blank">Играть в Лакибир</a>
+      </div>
+
+      <div class="game-card featured">
+        <div class="game-icon-container">
+          <img src="images/еще%20картинки/AVIAMASTERS.jpg" alt="AVIAMASTERS в Лакибир" class="game-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="game-placeholder" style="display: none;">✈️</div>
+        </div>
+        <h3 class="game-title">AVIAMASTERS</h3>
+        <p class="game-description">Avia Masters — это не просто краш-аркада, а аркадный симулятор полёта в Лакибир: вы наблюдаете весь маршрут самолёта и рост банка в реальном времени. В полёте встречаются коэффициенты «x5–x10» — они умножают текущий банк (например, со ставки 1$ при x10 итог станет 10$). Попадание в ракету делит банк пополам, а приземление на корабль закрепляет результат; промах — и самолёт уходит в воду. Полёт может быть длинным: часть событий увеличивает выигрыш, часть — обнуляет преимущества, из-за чего каждая сессия в Лакибирказино ощущается по-настоящему азартно. Проект от студии BGaming выделяется продуманной механикой, выразительной графикой и высоким потенциалом выигрыша. Играйте в AVIAMASTERS в Лакибир и почувствуйте адреналин настоящего полета к победе!</p>
+        <a href="https://lbgame777.xyz/1AvT3g" class="game-play-btn" target="_blank">Играть в Лакибир</a>
+      </div>
+
+      <div class="game-card featured">
+        <div class="game-icon-container">
+          <img src="images/еще%20картинки/TOWERRUSH.jpg" alt="TOWERRUSH в Лакибир" class="game-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="game-placeholder" style="display: none;">🏰</div>
+        </div>
+        <h3 class="game-title">TOWERRUSH</h3>
+        <p class="game-description">Tower Rush — динамичная игра в Лакибирказино, где всё решает твоя стратегия. Башня растёт этаж за этажом, множитель увеличивается, а вместе с ним и твой выигрыш. Каждый новый уровень — это риск и шанс на победу в Лакибир. TOWERRUSH сочетает стратегию и удачу, создавая незабываемый игровой опыт. В Лакибир вы найдете TOWERRUSH с лучшими условиями и самыми высокими выплатами! Постройте свою башню и выигрывайте призы в этой увлекательной игре от Лакибирказино.</p>
+        <a href="https://lbgame777.xyz/1AvT3g" class="game-play-btn" target="_blank">Играть в Лакибир</a>
+      </div>
+
       <div class="game-card">
         <div class="game-icon-container">
           <img src="images/1.jpg" alt="Пиньята" class="game-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -1398,6 +1718,33 @@
         }
       });
     });
+
+    // Snow Animation
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.innerHTML = '❄';
+      snowflake.style.left = Math.random() * 100 + '%';
+      snowflake.style.opacity = Math.random();
+      snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+      snowflake.style.animationDuration = (Math.random() * 8 + 6) + 's';
+      snowflake.style.animationDelay = Math.random() * 2 + 's';
+      snowflake.style.setProperty('--drift', (Math.random() * 200 - 100) + 'px');
+      
+      document.getElementById('snowContainer').appendChild(snowflake);
+      
+      setTimeout(() => {
+        snowflake.remove();
+      }, 15000);
+    }
+
+    // Create snowflakes periodically (slower)
+    function startSnow() {
+      setInterval(createSnowflake, 800);
+    }
+
+    // Start snow animation
+    startSnow();
   </script>
 
   <!-- Yandex.Metrika counter (добавьте свой код после регистрации) -->
